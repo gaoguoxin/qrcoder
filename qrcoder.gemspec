@@ -10,10 +10,10 @@ Gem::Specification.new do |s|
   
   s.files       = Dir["{lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.md"]
   
-  s.author      = "Bojan Milosavljevic"
-  s.email       = "milboj@gmail.com"
-  s.homepage    = "http://github.com/milboj/qrcoder"
-  s.version     = "0.1.3"
+  s.author      = "Boswellgao"
+  s.email       = "boswellgao@gmail.com"
+  s.homepage    = "http://github.com/gaoguoxin/qrcoder"
+  s.version     = "0.1.3.1"
 
   s.add_development_dependency "rake"
   s.add_development_dependency("bundler", ">= 1.0.0")

@@ -58,9 +58,19 @@ module QRCoder
         begin 
           formats.each do |format|
             if IMAGE_FORMATS.include?(format)
-              image = MiniMagick::Image.read(svg) { |i| i.format "svg" }
-              image.format format.to_s
-              image.write "#{output}/#{filename}.#{format}"
+              begin
+                puts abcd
+                image = MiniMagick::Image.read(svg) { |i| i.format "svg" }
+                image.format format.to_s
+                image.write "#{output}/#{filename}.#{format}"
+                puts '!!!!!!!!!!!!!!!!!!! image save ok !!!!!!!!!!!!!!!!!'
+              rescue Exception => e
+                puts "-------------image write erro:#{e}r-----------------"
+                data = svg
+                file = File.new("#{output}/#{filename}.#{format}","w")
+                file.write(data)
+                file.close
+              end
             else
               data = svg
               file = File.new("#{output}/#{filename}.#{format}", "w")
@@ -68,7 +78,8 @@ module QRCoder
               file.close
             end
           end
-        rescue 
+        rescue Exception => e
+          puts "-------------------other error:#{e}------------------------"
           raise QRCodeError.new "File saving error"
         end
       end
